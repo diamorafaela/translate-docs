@@ -10,9 +10,9 @@ from git import Repo
 from github import Github, GithubException
 
 
-def get_languages():
+def get_languages(app_directory):
+    print("app_directory:", app_directory)
     app_name = pathlib.Path(__file__).resolve().parent.name
-    print('APP NAME', app_name)
     hooks = importlib.import_module(f'{app_name}.hooks')
     try:
         return hooks.docs_languages
@@ -39,7 +39,7 @@ def translate_file(source_file, target_file, target_language, translate_client):
 
 
 def translate_md_files(app_directory):
-    target_languages = get_languages()
+    target_languages = get_languages(app_directory)
 
     if not target_languages:
         return 
