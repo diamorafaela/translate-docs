@@ -12,6 +12,7 @@ from github import Github, GithubException
 
 def get_languages():
     app_name = pathlib.Path(__file__).resolve().parent.name
+    print('APP NAME', app_name)
     hooks = importlib.import_module(f'{app_name}.hooks')
     try:
         return hooks.docs_languages
