@@ -1,0 +1,18 @@
+name: Translate Docs
+
+on:
+  pull_request:
+    paths:
+      - 'docs/*/en/*.md'
+jobs:
+  track_overrides:
+    runs-on: ubuntu-latest
+    name: Track Overrides
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name:  Track Overrides
+        uses: diamorafaela/translate-docs@main
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
