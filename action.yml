@@ -2,8 +2,11 @@ name: Translate Docs
 description: Translate md files under docs folder.
 author: Francisco Roldan
 inputs:
-  github-token:
+  GITHUB_TOKENn:
     description: "GitHub Token"
+    required: true
+  GOOGLE_APPLICATION_CREDENTIALS:
+    description: "Google application credentials"
     required: true
 branding:
   icon: alert-circle
@@ -36,8 +39,8 @@ runs:
     - name: Translate Markdown files
       shell: bash
       env:
-        GOOGLE_APPLICATION_CREDENTIALS: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GOOGLE_APPLICATION_CREDENTIALS: ${{ inputs.GOOGLE_APPLICATION_CREDENTIALS }}
+        GITHUB_TOKEN: ${{ inputs.GITHUB_TOKEN }}
         GITHUB_REPOSITORY: ${{ secrets.GITHUB_REPOSITORY }}
         GITHUB_BASE_REF: ${{ secrets.GITHUB_SHA }}
         GITHUB_REF: ${{ secrets.GITHUB_REF }}
