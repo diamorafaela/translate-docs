@@ -13,7 +13,7 @@ from github import Github, GithubException
 def get_languages(app_directory):
     print("app_directory:", app_directory)
     app_name = pathlib.Path(__file__).resolve().parent.name
-    hooks = importlib.import_module(f'{app_name}.hooks')
+    hooks = importlib.import_module(f'{app_directory.split('/')[-1]}.hooks')
     try:
         return hooks.docs_languages
     except Exception:
